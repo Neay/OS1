@@ -7,7 +7,7 @@ public class Buffer {
 	private Object[] Q;
 	private int f = 0;
 	private int r = 0;
-	private final int req = 100000;
+	private final int req = 1000000;
 	private int cre;
 	private int pre;
 	private int suc=0;
@@ -44,8 +44,8 @@ public class Buffer {
 	
 	synchronized void printsuccess(){
 		System.out.println("\n"+"Successfully consumed"+" "+suc+" "+"("+(((float)suc/(float)req)*100)+"%"+")");
-		System.out.println("Elapsed Time: "+(((float)tim/560))+" s");
-		System.out.println("Throughput "+(float)suc/(((float)tim)/560)+" successful requests/s");
+		System.out.println("Elapsed Time: "+(((float)tim/734))+" s");
+		System.out.println("Throughput "+(float)suc/(((float)tim)/734)+" successful requests/s");
 	}
 	
 	synchronized void success() {
@@ -98,7 +98,7 @@ public class Buffer {
             Q[r] = obj;
             r = (r + 1) % N;
             
-            System.out.println("Add"+" "+f+" "+r);
+         
             notify();
     }
 	synchronized void dequeue(){ //It's remove item
@@ -106,7 +106,7 @@ public class Buffer {
 	            Q[f] = null;
 	            f = (f + 1) % N;
 	            
-	            System.out.println("Remove"+" "+f+" "+r);
+	           
 	            notify();
 	    }
 }

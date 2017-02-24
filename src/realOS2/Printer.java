@@ -6,7 +6,7 @@ public class Printer extends Thread {
 		this.buffer=buffer;
 	}
 	public void run(){
-			while(buffer.stillReqc()||buffer.stillReqp()){
+			while(buffer.stillReqc()&&buffer.stillReqp()){
 					buffer.timecount();
 				try {
 					Thread.sleep(1);

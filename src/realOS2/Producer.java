@@ -9,14 +9,11 @@ public class Producer extends Thread {
 		buffer.procount();
 			while (buffer.stillReqp()) {
 				buffer.deReqp();
-				try {
-					Thread.sleep(1);
-				} catch (InterruptedException e){}
 			if(!buffer.isFull())
 			buffer.enqueue("A");
 			else{
 			try {
-				Thread.sleep(1);
+				Thread.sleep(0,1);
 			} catch (InterruptedException e){}
 			if(!buffer.isFull())
 				buffer.enqueue("A");

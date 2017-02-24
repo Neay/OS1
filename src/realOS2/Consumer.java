@@ -9,15 +9,13 @@ public class Consumer extends Thread {
 		buffer.concount();
 		while (buffer.stillReqc()) {
 			buffer.deReqc();
-			try {
-				Thread.sleep(1);
-			} catch (InterruptedException e){}
+			
 			if(!buffer.isEmpty()){
 			buffer.dequeue();
 			buffer.success();	}
 			else{
 		try {
-			Thread.sleep(1);
+			Thread.sleep(0,1);
 		} catch (InterruptedException e){}
 		if(!buffer.isEmpty()){
 			buffer.dequeue();

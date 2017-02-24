@@ -1,5 +1,9 @@
 package realOS2;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Scanner;
 
 public class Working {
 
@@ -8,37 +12,36 @@ public class Working {
 	 */
 	public static void main(String[] args) {
 		Buffer buffer = new Buffer();
-		Producer producer1 = new Producer(buffer);
-		Consumer consumer1 = new Consumer(buffer);
+		List<Producer> listPro = new ArrayList<Producer>();
+		List<Consumer> myCon = new ArrayList<Consumer>();
+		System.out.print("Number of producer : ");
+		Scanner scan = new Scanner(System.in);
+		int j = scan.nextInt();
+		
+		for(int i =0;i<j;i++)
+		{
+			listPro.add( new Producer(buffer));
+		}
+		System.out.print("Number of consumer : ");
+		int k = scan.nextInt();
+		for(int i =0;i<k;i++)
+		{
+			myCon.add( new Consumer(buffer));
+		}
+		for(Iterator<Producer> i = listPro.iterator(); i.hasNext(); ) {
+		    Producer item = i.next();
+		    item.start();
+		}
+	
+		for(Iterator<Consumer> i = myCon.iterator(); i.hasNext(); ) {
+			Consumer item = i.next();
+		    item.start();
+		}
 		Printer printer = new Printer(buffer);
-		Producer producer2 = new Producer(buffer);
-		Consumer consumer2 = new Consumer(buffer);
-		Producer producer3 = new Producer(buffer);
-		Consumer consumer3 = new Consumer(buffer);
-		Producer producer4 = new Producer(buffer);
-		Consumer consumer4 = new Consumer(buffer);
-		Producer producer5 = new Producer(buffer);
-		Consumer consumer5 = new Consumer(buffer);
-		Producer producer6 = new Producer(buffer);
-		Consumer consumer6 = new Consumer(buffer);
-		Producer producer7 = new Producer(buffer);
-		Consumer consumer7 = new Consumer(buffer);
+	
 		
-		producer1.start();
-		consumer1.start();
-		producer2.start();
-		consumer2.start();
-		producer3.start();
-		consumer3.start();
-		producer4.start();
-		consumer4.start();
-		producer5.start();
-		consumer5.start();
-		producer6.start();
-		consumer6.start();
-		producer7.start();
-		consumer7.start();
 		
+	
 		printer.start();
 		try { System.in.read(); }
 		catch (IOException e) {}
